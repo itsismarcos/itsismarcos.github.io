@@ -2,39 +2,40 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Marcos | Cyberpunk World</title>
-  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/2731/2731858.png" type="image/png">
   <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      font-family: 'Courier New', monospace;
-      color: #00fff7;
-      background: linear-gradient(180deg, #0f0c29, #302b63, #24243e);
-      overflow-x: hidden;
-      scroll-behavior: smooth;
-    }
-
     body {
+      background: linear-gradient(180deg, #0f0c29, #302b63, #24243e);
+      color: #00fff7;
+      font-family: 'Courier New', monospace;
+      text-align: center;
+      padding-top: 80px;
+      margin: 0;
+      height: 100vh;
       display: flex;
       flex-direction: column;
-      align-items: center;
       justify-content: flex-start;
-      padding-top: 100px;
+      overflow-x: hidden;
+      position: relative;
     }
 
     h1 {
       font-size: 3em;
+      margin-bottom: 10px;
       text-shadow: 0 0 20px #0ff;
       animation: flicker 1.5s infinite alternate, glow 1.5s infinite alternate;
+    }
+
+    @keyframes glow {
+      0% { text-shadow: 0 0 10px #0ff, 0 0 20px #0ff; }
+      50% { text-shadow: 0 0 20px #00fff7, 0 0 40px #00fff7; }
+      100% { text-shadow: 0 0 10px #0ff, 0 0 20px #0ff; }
     }
 
     p {
       font-size: 1.2em;
       color: #b2fefa;
-      margin: 20px 0 40px;
+      margin-bottom: 40px;
       border-right: 3px solid #00fff7;
       padding-right: 10px;
       animation: typing 3s steps(30) 1s forwards, blink 0.75s step-end infinite;
@@ -42,71 +43,10 @@
       overflow: hidden;
     }
 
-    .socials, .cards, .news-cards {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-      margin: 20px 0;
-    }
-
-    .socials a, .card a, .news-card a {
-      text-decoration: none;
-      color: #fff;
-      background: #00fff7;
-      padding: 12px 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px #00fff7, 0 0 40px #00fff7;
-      font-weight: bold;
-      transition: all 0.3s;
-    }
-
-    .socials a:hover, .card:hover, .news-card:hover {
-      background: #ff00e0;
-      box-shadow: 0 0 10px #ff00e0, 0 0 40px #ff00e0;
-      transform: scale(1.05);
-    }
-
-    .card, .news-card {
-      background-color: #1a1a1a;
-      border: 2px solid #00fff7;
-      border-radius: 10px;
-      padding: 20px;
-      width: 250px;
-      text-align: center;
-      box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
-    }
-
-    .news {
-      margin-top: 60px;
-      text-align: center;
-    }
-
-    .news h2 {
-      color: #00fff7;
-      text-shadow: 0 0 10px #00fff7;
-    }
-
-    footer {
-      margin: 60px 0 20px;
-      color: #888;
-      font-size: 0.9em;
-      animation: slideUp 2s infinite alternate;
-    }
-
-    .bg-music {
-      display: none;
-    }
-
-    @keyframes glow {
-      0% { text-shadow: 0 0 10px #0ff; }
-      50% { text-shadow: 0 0 20px #00fff7, 0 0 40px #00fff7; }
-      100% { text-shadow: 0 0 10px #0ff; }
-    }
-
     @keyframes flicker {
-      0%, 100% { opacity: 1; }
+      0% { opacity: 1; }
       50% { opacity: 0.6; }
+      100% { opacity: 1; }
     }
 
     @keyframes typing {
@@ -118,54 +58,120 @@
       50% { border-color: transparent; }
     }
 
+    .socials {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .socials a {
+      text-decoration: none;
+      color: #fff;
+      background: #00fff7;
+      padding: 12px 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #00fff7, 0 0 40px #00fff7;
+      font-weight: bold;
+      transition: 0.3s;
+      transform: scale(1);
+    }
+
+    .socials a:hover {
+      background: #ff00e0;
+      box-shadow: 0 0 10px #ff00e0, 0 0 40px #ff00e0;
+      transform: scale(1.1);
+    }
+
+    /* Rodapé */
+    footer {
+      margin-top: 60px;
+      color: #888;
+      font-size: 0.9em;
+      animation: slideUp 2s infinite alternate;
+    }
+
     @keyframes slideUp {
       0% { transform: translateY(10px); }
       100% { transform: translateY(-10px); }
     }
 
-    /* Botão topo */
-    #topBtn {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #00fff7;
-      border: none;
-      border-radius: 50%;
-      padding: 12px 16px;
-      color: #000;
-      font-weight: bold;
-      cursor: pointer;
-      box-shadow: 0 0 15px #00fff7;
-      transition: 0.3s;
-      z-index: 999;
+    .bg-music {
+      position: absolute;
+      top: -9999px;
     }
 
-    #topBtn:hover {
-      background: #ff00e0;
-      box-shadow: 0 0 20px #ff00e0;
-      color: #fff;
-    }
-
-    /* Partículas */
-    #particles-js {
-      position: fixed;
-      top: 0; left: 0;
+    .particles {
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
-      z-index: -1;
+      background: url('https://www.transparenttextures.com/patterns/black-linen.png');
+      animation: particleEffect 1s linear infinite;
+      opacity: 0.1;
+      pointer-events: none;
+    }
+
+    @keyframes particleEffect {
+      0% { background-position: 0 0; }
+      100% { background-position: 50px 50px; }
+    }
+
+    /* Estilo das notícias */
+    .news {
+      margin-top: 60px;
+    }
+
+    .news h2 {
+      color: #00fff7;
+      text-shadow: 0 0 10px #00fff7;
+      margin-bottom: 20px;
+    }
+
+    .news-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .news-card {
+      background-color: #1a1a1a;
+      border: 2px solid #00fff7;
+      border-radius: 12px;
+      padding: 20px;
+      width: 250px;
+      box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+      text-align: center;
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s;
+    }
+
+    .news-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(255, 0, 255, 0.7);
+      border-color: #ff00ff;
+    }
+
+    .news-card a {
+      text-decoration: none;
+      color: #00fff7;
+      font-weight: bold;
+      font-size: 1.1em;
     }
   </style>
 </head>
 <body>
 
-  <div id="particles-js"></div>
-
   <audio class="bg-music" autoplay loop>
     <source src="caminho/para/sua/musica.mp3" type="audio/mp3">
+    Seu navegador não suporta o áudio.
   </audio>
 
+  <div class="particles"></div>
+
   <h1>🌐 Marcos Roberto</h1>
-  <p>Explorador do submundo digital | Criador do Olho de Deus 💀</p>
+  <p>Explorador do submundo digital | Criador do Olho de Deus | Cyberpunk lifestyle 💀</p>
 
   <div class="socials">
     <a href="https://instagram.com/itsismarcos" target="_blank">Instagram</a>
@@ -173,25 +179,11 @@
     <a href="https://twitter.com/itsismarcos" target="_blank">Twitter</a>
   </div>
 
-  <div class="cards">
-    <div class="card">
-      <h3>Postagens Recentes</h3>
-      <a href="#">Ver mais</a>
-    </div>
-    <div class="card">
-      <h3>Cibersegurança</h3>
-      <a href="#">Explorar</a>
-    </div>
-    <div class="card">
-      <h3>Olho de Deus</h3>
-      <a href="#">Descubra</a>
-    </div>
-  </div>
-
+  <!-- Notícias -->
   <div class="news">
     <h2>📰 Últimas Notícias</h2>
     <div class="news-cards" id="news-cards">
-      <!-- Carregamento dinâmico -->
+      <!-- Cards gerados dinamicamente -->
     </div>
   </div>
 
@@ -199,21 +191,12 @@
     <p>© 2025 Marcos Roberto | Hacked with 💻</p>
   </footer>
 
-  <button id="topBtn" onclick="scrollToTop()">↑</button>
-
-  <!-- Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <script>
-    // Botão topo
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    // Carregar notícias
     async function loadNews() {
-      const res = await fetch('https://api.github.com/repos/itsismarcos/itsismarcos.github.io/contents/noticias');
-      const data = await res.json();
-      const container = document.getElementById('news-cards');
+      const response = await fetch('https://api.github.com/repos/itsismarcos/itsismarcos.github.io/contents/noticias');
+      const data = await response.json();
+
+      const newsCards = document.getElementById('news-cards');
 
       data.forEach(item => {
         if (item.name.endsWith('.txt') || item.name.endsWith('.md')) {
@@ -226,15 +209,12 @@
           link.textContent = item.name.replace('.txt', '').replace('.md', '');
 
           card.appendChild(link);
-          container.appendChild(card);
+          newsCards.appendChild(card);
         }
       });
     }
 
     loadNews();
-
-    // Partículas
-    particlesJS.load('particles-js', 'https://cdn.jsdelivr.net/gh/VincentGarreau/particles.js/particles.json');
   </script>
 
 </body>
