@@ -4,26 +4,60 @@
   <meta charset="UTF-8">
   <title>Marcos | Cyberpunk World</title>
   <style>
+    /* Estilo geral */
     body {
       background: linear-gradient(180deg, #0f0c29, #302b63, #24243e);
       color: #00fff7;
       font-family: 'Courier New', monospace;
       text-align: center;
       padding-top: 80px;
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      overflow: hidden;
     }
 
+    /* Título animado */
     h1 {
       font-size: 3em;
       margin-bottom: 10px;
       text-shadow: 0 0 20px #0ff;
+      animation: flicker 1.5s infinite alternate;
     }
 
+    /* Efeito de digitação no texto */
     p {
       font-size: 1.2em;
       color: #b2fefa;
       margin-bottom: 40px;
+      border-right: 3px solid #00fff7;
+      padding-right: 10px;
+      animation: typing 3s steps(30) 1s forwards, blink 0.75s step-end infinite;
+      white-space: nowrap;
+      overflow: hidden;
     }
 
+    /* Animação de flicker no título */
+    @keyframes flicker {
+      0% { opacity: 1; }
+      50% { opacity: 0.6; }
+      100% { opacity: 1; }
+    }
+
+    /* Animação de digitação no parágrafo */
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    /* Efeito de piscar do cursor */
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+
+    /* Redes sociais */
     .socials {
       display: flex;
       justify-content: center;
@@ -40,6 +74,7 @@
       box-shadow: 0 0 10px #00fff7, 0 0 40px #00fff7;
       font-weight: bold;
       transition: 0.3s;
+      transform: scale(1);
     }
 
     .socials a:hover {
@@ -48,14 +83,27 @@
       transform: scale(1.1);
     }
 
+    /* Rodapé */
     footer {
       margin-top: 60px;
       color: #888;
       font-size: 0.9em;
     }
+
+    /* Música de fundo */
+    .bg-music {
+      position: absolute;
+      top: -9999px;
+    }
   </style>
 </head>
 <body>
+  <!-- Música de fundo (opcional) -->
+  <audio class="bg-music" autoplay loop>
+    <source src="caminho/para/sua/musica.mp3" type="audio/mp3">
+    Seu navegador não suporta o áudio.
+  </audio>
+
   <h1>🌐 Marcos Roberto</h1>
   <p>Explorador do submundo digital | Criador do Olho de Deus | Cyberpunk lifestyle 💀</p>
 
