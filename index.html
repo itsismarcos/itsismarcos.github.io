@@ -17,6 +17,7 @@
       flex-direction: column;
       justify-content: center;
       overflow: hidden;
+      position: relative;
     }
 
     /* Título animado */
@@ -24,7 +25,14 @@
       font-size: 3em;
       margin-bottom: 10px;
       text-shadow: 0 0 20px #0ff;
-      animation: flicker 1.5s infinite alternate;
+      animation: flicker 1.5s infinite alternate, glow 1.5s infinite alternate;
+    }
+
+    /* Brilho no título */
+    @keyframes glow {
+      0% { text-shadow: 0 0 10px #0ff, 0 0 20px #0ff; }
+      50% { text-shadow: 0 0 20px #00fff7, 0 0 40px #00fff7; }
+      100% { text-shadow: 0 0 10px #0ff, 0 0 20px #0ff; }
     }
 
     /* Efeito de digitação no texto */
@@ -83,11 +91,49 @@
       transform: scale(1.1);
     }
 
+    /* Cards com links */
+    .cards {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 50px;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      background-color: #1a1a1a;
+      border: 2px solid #00fff7;
+      border-radius: 10px;
+      padding: 20px;
+      width: 250px;
+      box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+      text-align: center;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
+    }
+
+    .card a {
+      text-decoration: none;
+      color: #00fff7;
+      font-weight: bold;
+    }
+
     /* Rodapé */
     footer {
       margin-top: 60px;
       color: #888;
       font-size: 0.9em;
+      animation: slideUp 2s infinite alternate;
+    }
+
+    /* Efeito de animação no rodapé */
+    @keyframes slideUp {
+      0% { transform: translateY(10px); }
+      100% { transform: translateY(-10px); }
     }
 
     /* Música de fundo */
@@ -95,14 +141,37 @@
       position: absolute;
       top: -9999px;
     }
+
+    /* Partículas de fundo */
+    .particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://www.transparenttextures.com/patterns/black-linen.png');
+      animation: particleEffect 1s linear infinite;
+      opacity: 0.1;
+      pointer-events: none;
+    }
+
+    @keyframes particleEffect {
+      0% { background-position: 0 0; }
+      100% { background-position: 50px 50px; }
+    }
+
   </style>
 </head>
 <body>
+
   <!-- Música de fundo (opcional) -->
   <audio class="bg-music" autoplay loop>
     <source src="caminho/para/sua/musica.mp3" type="audio/mp3">
     Seu navegador não suporta o áudio.
   </audio>
+
+  <!-- Partículas no fundo -->
+  <div class="particles"></div>
 
   <h1>🌐 Marcos Roberto</h1>
   <p>Explorador do submundo digital | Criador do Olho de Deus | Cyberpunk lifestyle 💀</p>
@@ -113,8 +182,25 @@
     <a href="https://twitter.com/itsismarcos" target="_blank">Twitter</a>
   </div>
 
+  <!-- Cards com links -->
+  <div class="cards">
+    <div class="card">
+      <h3>Postagens Recentes</h3>
+      <a href="#">Ver mais</a>
+    </div>
+    <div class="card">
+      <h3>Cibersegurança</h3>
+      <a href="#">Explorar</a>
+    </div>
+    <div class="card">
+      <h3>Olho de Deus</h3>
+      <a href="#">Descubra</a>
+    </div>
+  </div>
+
   <footer>
     <p>© 2025 Marcos Roberto | Hacked with 💻</p>
   </footer>
+
 </body>
 </html>
