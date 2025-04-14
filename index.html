@@ -2,265 +2,99 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Marcos | Cyberpunk World</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marcos | Cybersecurity</title>
   <style>
     body {
-      background: linear-gradient(180deg, #0f0c29, #302b63, #24243e);
-      color: #00fff7;
+      background-color: #0f0;
+      color: #00ff00;
       font-family: 'Courier New', monospace;
       text-align: center;
-      padding-top: 80px;
       margin: 0;
+      padding: 0;
       height: 100vh;
       display: flex;
       flex-direction: column;
-      justify-content: flex-start;
+      justify-content: center;
       overflow-x: hidden;
-      position: relative;
     }
 
     h1 {
       font-size: 3em;
-      margin-bottom: 10px;
-      text-shadow: 0 0 20px #0ff;
-      animation: flicker 1.5s infinite alternate, glow 1.5s infinite alternate;
-    }
-
-    @keyframes glow {
-      0% { text-shadow: 0 0 10px #0ff, 0 0 20px #0ff; }
-      50% { text-shadow: 0 0 20px #00fff7, 0 0 40px #00fff7; }
-      100% { text-shadow: 0 0 10px #0ff, 0 0 20px #0ff; }
+      margin-bottom: 20px;
+      text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
     }
 
     p {
       font-size: 1.2em;
-      color: #b2fefa;
       margin-bottom: 40px;
-      border-right: 3px solid #00fff7;
-      padding-right: 10px;
-      animation: typing 3s steps(30) 1s forwards, blink 0.75s step-end infinite;
-      white-space: nowrap;
-      overflow: hidden;
-    }
-
-    @keyframes flicker {
-      0% { opacity: 1; }
-      50% { opacity: 0.6; }
-      100% { opacity: 1; }
-    }
-
-    @keyframes typing {
-      from { width: 0; }
-      to { width: 100%; }
-    }
-
-    @keyframes blink {
-      50% { border-color: transparent; }
+      font-weight: bold;
+      color: #b2ffb2;
+      text-shadow: 0 0 10px #00ff00;
     }
 
     .socials {
       display: flex;
       justify-content: center;
       gap: 20px;
-      flex-wrap: wrap;
+      margin-bottom: 50px;
     }
 
     .socials a {
       text-decoration: none;
-      color: #fff;
-      background: #00fff7;
+      color: #00ff00;
+      background-color: #000;
       padding: 12px 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px #00fff7, 0 0 40px #00fff7;
+      border-radius: 5px;
       font-weight: bold;
-      transition: 0.3s;
-      transform: scale(1);
+      transition: background-color 0.3s, transform 0.3s;
     }
 
     .socials a:hover {
-      background: #ff00e0;
-      box-shadow: 0 0 10px #ff00e0, 0 0 40px #ff00e0;
+      background-color: #00ff00;
+      color: #000;
       transform: scale(1.1);
     }
 
-    .cards {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      margin-top: 50px;
-      flex-wrap: wrap;
-    }
-
-    .card {
-      background-color: #1a1a1a;
-      border: 2px solid #00fff7;
-      border-radius: 10px;
-      padding: 20px;
-      width: 250px;
-      box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
-      text-align: center;
-      transition: transform 0.3s ease-in-out;
-    }
-
-    .card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
-    }
-
-    .card a {
-      text-decoration: none;
-      color: #00fff7;
-      font-weight: bold;
-    }
-
-    /* Rodapé */
     footer {
-      margin-top: 60px;
+      position: absolute;
+      bottom: 10px;
       color: #888;
-      font-size: 0.9em;
-      animation: slideUp 2s infinite alternate;
-    }
-
-    @keyframes slideUp {
-      0% { transform: translateY(10px); }
-      100% { transform: translateY(-10px); }
+      font-size: 0.8em;
+      text-align: center;
     }
 
     .bg-music {
       position: absolute;
       top: -9999px;
     }
-
-    .particles {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url('https://www.transparenttextures.com/patterns/black-linen.png');
-      animation: particleEffect 1s linear infinite;
-      opacity: 0.1;
-      pointer-events: none;
-    }
-
-    @keyframes particleEffect {
-      0% { background-position: 0 0; }
-      100% { background-position: 50px 50px; }
-    }
-
-    /* Estilo das notícias */
-    .news {
-      margin-top: 60px;
-    }
-
-    .news h2 {
-      color: #00fff7;
-      text-shadow: 0 0 10px #00fff7;
-      margin-bottom: 20px;
-    }
-
-    .news-cards {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
-    }
-
-    .news-card {
-      background-color: #1a1a1a;
-      border: 2px solid #00fff7;
-      border-radius: 12px;
-      padding: 20px;
-      width: 250px;
-      box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
-      text-align: center;
-      transition: transform 0.3s ease-in-out, box-shadow 0.3s;
-    }
-
-    .news-card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 20px rgba(255, 0, 255, 0.7);
-      border-color: #ff00ff;
-    }
-
-    .news-card a {
-      text-decoration: none;
-      color: #00fff7;
-      font-weight: bold;
-      font-size: 1.1em;
-    }
   </style>
 </head>
 <body>
 
+  <!-- Música de fundo em loop -->
   <audio class="bg-music" autoplay loop>
     <source src="caminho/para/sua/musica.mp3" type="audio/mp3">
     Seu navegador não suporta o áudio.
   </audio>
 
-  <div class="particles"></div>
+  <!-- Título -->
+  <h1>🔐 Marcos Roberto | Cibersegurança</h1>
 
-  <h1>🌐 Marcos Roberto</h1>
-  <p>Explorador do submundo digital | Criador do Olho de Deus | Cyberpunk lifestyle 💀</p>
+  <!-- Mensagem -->
+  <p>A segurança cibernética nunca foi tão importante. Proteja seus dados, seus sistemas e sua privacidade. O futuro digital depende de ações responsáveis.</p>
 
+  <!-- Redes sociais -->
   <div class="socials">
     <a href="https://instagram.com/itsismarcos" target="_blank">Instagram</a>
     <a href="https://linkedin.com/in/itsismarcos" target="_blank">LinkedIn</a>
     <a href="https://twitter.com/itsismarcos" target="_blank">Twitter</a>
   </div>
 
-  <div class="cards">
-    <div class="card">
-      <h3>Postagens Recentes</h3>
-      <a href="#">Ver mais</a>
-    </div>
-    <div class="card">
-      <h3>Cibersegurança</h3>
-      <a href="#">Explorar</a>
-    </div>
-    <div class="card">
-      <h3>Olho de Deus</h3>
-      <a href="#">Descubra</a>
-    </div>
-  </div>
-
-  <!-- Notícias -->
-  <div class="news">
-    <h2>📰 Últimas Notícias</h2>
-    <div class="news-cards" id="news-cards">
-      <!-- Cards gerados dinamicamente -->
-    </div>
-  </div>
-
+  <!-- Rodapé -->
   <footer>
-    <p>© 2025 Marcos Roberto | Hacked with 💻</p>
+    <p>© 2025 Marcos Roberto | Conectando o mundo digital com segurança 💻</p>
   </footer>
-
-  <script>
-    async function loadNews() {
-      const response = await fetch('https://api.github.com/repos/itsismarcos/itsismarcos.github.io/contents/noticias');
-      const data = await response.json();
-
-      const newsCards = document.getElementById('news-cards');
-
-      data.forEach(item => {
-        if (item.name.endsWith('.txt') || item.name.endsWith('.md')) {
-          const card = document.createElement('div');
-          card.className = 'news-card';
-
-          const link = document.createElement('a');
-          link.href = `https://itsismarcos.github.io/noticias/${item.name}`;
-          link.target = "_blank";
-          link.textContent = item.name.replace('.txt', '').replace('.md', '');
-
-          card.appendChild(link);
-          newsCards.appendChild(card);
-        }
-      });
-    }
-
-    loadNews();
-  </script>
 
 </body>
 </html>
