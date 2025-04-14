@@ -83,7 +83,6 @@
       transform: scale(1.1);
     }
 
-    /* Rodapé */
     footer {
       margin-top: 60px;
       color: #888;
@@ -118,7 +117,6 @@
       100% { background-position: 50px 50px; }
     }
 
-    /* Estilo das notícias */
     .news {
       margin-top: 60px;
     }
@@ -179,7 +177,6 @@
     <a href="https://twitter.com/itsismarcos" target="_blank">Twitter</a>
   </div>
 
-  <!-- Notícias -->
   <div class="news">
     <h2>📰 Últimas Notícias</h2>
     <div class="news-cards" id="news-cards">
@@ -193,22 +190,20 @@
 
   <script>
     async function loadNews() {
-      // Modifique para buscar arquivos .html dentro da pasta 'noticias'
       const response = await fetch('https://api.github.com/repos/itsismarcos/itsismarcos.github.io/contents/noticias');
       const data = await response.json();
 
       const newsCards = document.getElementById('news-cards');
 
       data.forEach(item => {
-        // Verificar se o arquivo tem a extensão .html
-        if (item.name.endsWith('.html')) {
+        if (item.name.endsWith('.html') || item.name.endsWith('.md')) {
           const card = document.createElement('div');
           card.className = 'news-card';
 
           const link = document.createElement('a');
           link.href = `https://itsismarcos.github.io/noticias/${item.name}`;
           link.target = "_blank";
-          link.textContent = item.name.replace('.html', ''); // Remove a extensão .html do nome
+          link.textContent = item.name.replace('.html', '').replace('.md', '');
 
           card.appendChild(link);
           newsCards.appendChild(card);
