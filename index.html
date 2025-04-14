@@ -122,43 +122,6 @@
       font-weight: bold;
     }
 
-    /* Seção de notícias */
-    .news {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 40px;
-    }
-
-    .news h2 {
-      font-size: 2.5em;
-      margin-bottom: 20px;
-      text-shadow: 0 0 20px #0ff;
-    }
-
-    .news ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .news li {
-      background: #333;
-      margin: 10px 0;
-      padding: 15px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
-    }
-
-    .news li a {
-      color: #00fff7;
-      font-weight: bold;
-      text-decoration: none;
-    }
-
-    .news li a:hover {
-      color: #ff00e0;
-    }
-
     /* Rodapé */
     footer {
       margin-top: 60px;
@@ -172,6 +135,31 @@
       0% { transform: translateY(10px); }
       100% { transform: translateY(-10px); }
     }
+
+    /* Música de fundo */
+    .bg-music {
+      position: absolute;
+      top: -9999px;
+    }
+
+    /* Partículas de fundo */
+    .particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://www.transparenttextures.com/patterns/black-linen.png');
+      animation: particleEffect 1s linear infinite;
+      opacity: 0.1;
+      pointer-events: none;
+    }
+
+    @keyframes particleEffect {
+      0% { background-position: 0 0; }
+      100% { background-position: 50px 50px; }
+    }
+
   </style>
 </head>
 <body>
@@ -194,14 +182,6 @@
     <a href="https://twitter.com/itsismarcos" target="_blank">Twitter</a>
   </div>
 
-  <!-- Seção de Notícias -->
-  <div class="news">
-    <h2>Últimas Notícias</h2>
-    <ul id="news-list">
-      <!-- As notícias serão inseridas aqui pelo JavaScript -->
-    </ul>
-  </div>
-
   <!-- Cards com links -->
   <div class="cards">
     <div class="card">
@@ -221,28 +201,6 @@
   <footer>
     <p>© 2025 Marcos Roberto | Hacked with 💻</p>
   </footer>
-
-  <script>
-    // Função para carregar as notícias do repositório GitHub
-    async function loadNews() {
-      const response = await fetch('https://api.github.com/repos/itsismarcos/noticias/contents');
-      const data = await response.json();
-
-      const newsList = document.getElementById('news-list');
-      data.forEach(item => {
-        if (item.name.endsWith('.md')) {
-          const newsItem = document.createElement('li');
-          const newsLink = document.createElement('a');
-          newsLink.href = `https://github.com/itsismarcos/noticias/blob/main/${item.name}`;
-          newsLink.textContent = item.name.replace('.md', '').replace('-', ' ').toUpperCase();
-          newsItem.appendChild(newsLink);
-          newsList.appendChild(newsItem);
-        }
-      });
-    }
-
-    loadNews();  // Carregar as notícias ao carregar a página
-  </script>
 
 </body>
 </html>
