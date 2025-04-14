@@ -53,6 +53,8 @@
       try {
         const res = await fetch(`noticias/${file}`);
         const content = await res.text();
+        
+        // Exibindo o conteúdo do arquivo de texto
         document.getElementById("terminal").textContent = content;
       } catch (err) {
         document.getElementById("terminal").textContent = "Erro ao carregar o arquivo.";
